@@ -55,9 +55,9 @@ class TestGame:
             myfont = pygame.font.SysFont("Comic Sans MS", 90)
             # apply it to text on a label
             yellow = (255, 255, 0)
-            title = myfont.render("Python and Pygame are Fun!", 1, yellow)
+            title = myfont.render("RedditXO Client!", 1, yellow)
             # put the label object on the screen at point x=100, y=100
-            screen.blit(title, (130, 300))
+            screen.blit(title, (300, 100))
 
             # Clear Display
             #screen.fill((255, 255, 255))  # 255 for white
