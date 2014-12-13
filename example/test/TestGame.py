@@ -70,6 +70,10 @@ class TestGame:
                     pos = pygame.mouse.get_pos()
                     self.printText(str(pos.__str__()), 50, 90, 500, self.blue)
 
+                    clicked_sprites = [s for s in label_arr if s.rect.collidepoint(pos)]
+                    print(len(clicked_sprites))
+                    
+
             # Print Title
             self.printText("RedditXO Client", 90, 450, 50, self.yellow)
 
