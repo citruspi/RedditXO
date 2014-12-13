@@ -41,9 +41,17 @@ class Reddit(QtGui.QWidget):
         self.show()
 
     def set_layout(self):
+        main_grid = QtGui.QGridLayout()
+        welcome_wid = QtGui.QLabel(
+            "Hello! Welcome to RedditXO, a great way to browse recent news and updates on the world. From the people to the people")
+        main_grid.addWidget(welcome_wid, 0, 0)
+
         grid = QtGui.QGridLayout()
         grid.setSpacing(10)
-        self.setLayout(grid)
+        main_grid.addLayout(grid, 1, 0)
+        # stack.addChildLayout(grid)
+        # self.setLayout(grid)
+        self.setLayout(main_grid)
 
         positions = [(i, j) for i in range(5) for j in range(2)]
         for position, name in zip(positions, self.subreddits):
@@ -52,11 +60,11 @@ class Reddit(QtGui.QWidget):
                 continue
             button = QtGui.QPushButton(name)
             button.setSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
-            button.setStyleSheet('font-size: 60pt; font-family: ComicSans;')
+            button.setStyleSheet('font-size: 20pt; font-family: ComicSans;')
             grid.addWidget(button, *position)
 
     def center(self):
-        self.resize(250 * 4, 150 * 4)
+        self.resize(250 * 2, 150 * 2)
         qr = self.frameGeometry()
         cp = QtGui.QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
