@@ -20,6 +20,13 @@ class TestGame:
         self.blue = (0, 0, 255)
         self.yellow = (255, 255, 0)
 
+        self.subreddits = {
+            'Science': 'science',
+            'Technology': 'technology',
+            'World News': 'news',
+            'Money': 'money'
+        }
+
         self.paused = False
         self.direction = 1
 
@@ -58,21 +65,14 @@ class TestGame:
                     elif event.key == pygame.K_RIGHT:
                         self.direction = 1
 
-            # pick a font you have and set its size
-            # myfont = pygame.font.SysFont("Comic Sans MS", 90)
-            # # apply it to text on a label
-            # yellow = (255, 255, 0)
-            # title = myfont.render("RedditXO Client!", 1, yellow)
-            # # put the label object on the screen at point x=100, y=100
-            # screen.blit(title, (450, 50))
-
+            # Print Title
             self.printText("RedditXO Client", 90, 450, 50, self.yellow)
 
-            # Clear Display
-            #screen.fill((255, 255, 255))  # 255 for white
-
-            # Draw the ball
-            #pygame.draw.circle(screen, (255, 0, 0), (self.x, self.y), 100)
+            start_x_pos_subreddits = 150
+            start_y_pos_subreddits = 150
+            for key in self.subreddits:
+                self.printText(key, 60, start_x_pos_subreddits, start_y_pos_subreddits, self.green)
+                start_y_pos_subreddits += 50
 
             # Flip Display
             pygame.display.flip()
@@ -80,8 +80,7 @@ class TestGame:
             # Try to stay at 30 FPS
             self.clock.tick(30)
 
-
-    def printText(self, txtText, Textsize , Textx, Texty, Textcolor,  text_font="MS Comic Sans"):
+    def printText(self, txtText, Textsize, Textx, Texty, Textcolor, text_font="MS Comic Sans"):
         # pick a font you have and set its size
         myfont = pygame.font.SysFont(text_font, Textsize)
         # apply it to text on a label
@@ -99,6 +98,7 @@ def main():
     pygame.display.set_mode((0, 0), pygame.RESIZABLE)
     game = TestGame()
     game.run()
+
 
 if __name__ == '__main__':
     main()
