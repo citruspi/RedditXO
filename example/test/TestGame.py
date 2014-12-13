@@ -54,16 +54,15 @@ class TestGame:
             # pick a font you have and set its size
             myfont = pygame.font.SysFont("Comic Sans MS", 30)
             # apply it to text on a label
-            yellow = (255, 255, 0)
-            label = myfont.render("Python and Pygame are Fun!", 1, yellow)
+            label = myfont.render("Python and Pygame are Fun!", 1)
             # put the label object on the screen at point x=100, y=100
             screen.blit(label, (100, 100))
 
             # Clear Display
-            screen.fill((255, 255, 255))  # 255 for white
+            #screen.fill((255, 255, 255))  # 255 for white
 
             # Draw the ball
-            pygame.draw.circle(screen, (255, 0, 0), (self.x, self.y), 100)
+            #pygame.draw.circle(screen, (255, 0, 0), (self.x, self.y), 100)
 
             # Flip Display
             pygame.display.flip()
