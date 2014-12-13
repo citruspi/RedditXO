@@ -47,8 +47,10 @@ class TestGame:
 
         screen = pygame.display.get_surface()
         self.screen = screen
+        label_arr = []
 
         while self.running:
+
             # Pump GTK messages.
             while Gtk.events_pending():
                 Gtk.main_iteration()
@@ -64,18 +66,23 @@ class TestGame:
                         self.direction = -1
                     elif event.key == pygame.K_RIGHT:
                         self.direction = 1
+                elif event.type == pygame.MOUSEBUTTONUP:
+                    pos = pygame.mouse.get_pos()
+                    self.printText(str(pos.__str__()), 50, 90, 500, self.blue)
 
             # Print Title
             self.printText("RedditXO Client", 90, 450, 50, self.yellow)
 
             start_x_pos_subreddits = 150
             start_y_pos_subreddits = 150
+
             for key in self.subreddits:
-                self.printText(key, 60, start_x_pos_subreddits, start_y_pos_subreddits, self.green)
+                label_arr.append(self.printText(key, 60, start_x_pos_subreddits, start_y_pos_subreddits, self.green))
                 start_y_pos_subreddits += 100
 
+
             # Flip Display
-            pygame.display.flip()
+            #pygame.display.flip()
             # fill later
 
             # Try to stay at 30 FPS
@@ -90,6 +97,7 @@ class TestGame:
         self.screen.blit(label, (Textx, Texty))
         # show the whole thing
         pygame.display.flip()
+        return label
 
 
 # This function is called when the game is run directly from the command line:
