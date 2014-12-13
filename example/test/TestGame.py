@@ -14,12 +14,16 @@ from PyQt4 import QtGui
 class Reddit(QtGui.QWidget):
     def __init__(self):
         super(Reddit, self).__init__()
-        self.sections = {
+        self.subreddits = {
             "Science": "science",
             "Technology": "Technology",
             "World News": "Worldnews",
             "Local News": "Loalnews",
-            "Sports": "sports"
+            "Sports": "sports",
+            "Travel": "travel",
+            "Math":"",
+            "English":"",
+            "Secret":""
         }
 
         self.initUI()
@@ -27,13 +31,6 @@ class Reddit(QtGui.QWidget):
     def initUI(self):
         self.fetch_data()
         self.set_layout()
-        # Set font
-        QtGui.QToolTip.setFont(QtGui.QFont('SansSerif', 10))
-
-        # Making a button
-        btn = QtGui.QPushButton('Button', self)
-        btn.resize(btn.sizeHint())
-        btn.move(50, 50)
 
         self.center()
         self.setWindowTitle('RedditXO')
@@ -44,6 +41,14 @@ class Reddit(QtGui.QWidget):
     def set_layout(self):
         grid = QtGui.QGridLayout()
         self.setLayout(grid)
+
+        positions = [(i,j) for i in range(5) for j in range(2)]
+        for position, name in zip(positions, self.subreddits):
+
+            if name == '':
+                continue
+            button = QtGui.QPushButton(name)
+            grid.addWidget(button, *position)
 
     def center(self):
         self.resize(250 * 4, 150 * 4)
