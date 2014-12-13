@@ -72,7 +72,6 @@ class TestGame:
 
                     clicked_sprites = [s for s in label_arr if s.rect.collidepoint(pos)]
                     print(len(clicked_sprites))
-                    
 
             # Print Title
             self.printText("RedditXO Client", 90, 450, 50, self.yellow)
