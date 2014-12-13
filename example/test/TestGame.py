@@ -64,7 +64,7 @@ class Reddit(QtGui.QWidget):
             grid.addWidget(button, *position)
 
     def center(self):
-        self.resize(250 * 2, 150 * 2)
+        self.resize(230 * 2, 150 * 3)
         qr = self.frameGeometry()
         cp = QtGui.QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
