@@ -1,30 +1,41 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
-ZetCode PyQt4 tutorial 
-
-In this example, we create a simple
-window in PyQt4.
-
-author: Jan Bodnar
-website: zetcode.com 
-last edited: October 2011
+last edited: October 2014
+Reddit XO Main entry point for QT program
 """
 
 import sys
+
 from PyQt4 import QtGui
 
 
-def main():
-    
-    app = QtGui.QApplication(sys.argv)
+class Example(QtGui.QWidget):
+    def __init__(self):
+        super(Example, self).__init__()
 
-    w = QtGui.QWidget()
-    w.resize(250, 150)
-    w.move(300, 300)
-    w.setWindowTitle('RedditXO')
-    w.show()
-    
+        self.initUI()
+
+    def initUI(self):
+        self.resize(250 * 4, 150 * 4)
+        self.center()
+
+        self.setWindowTitle('Center')
+        self.show()
+
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QtGui.QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
+
+def main():
+    app = QtGui.QApplication(sys.argv)
+    ex = Example()
     sys.exit(app.exec_())
 
 
 if __name__ == '__main__':
-    main()
+    main()     
