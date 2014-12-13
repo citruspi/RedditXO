@@ -21,15 +21,16 @@ class Reddit(QtGui.QWidget):
             "Local News": "Loalnews",
             "Sports": "sports",
             "Travel": "travel",
-            "Math":"",
-            "English":"",
-            "Secret":"",
+            "Math": "",
+            "English": "",
+            "Secret": "",
             "Funny": ""
         }
 
         self.initUI()
 
     def initUI(self):
+
         self.fetch_data()
         self.set_layout()
 
@@ -41,14 +42,17 @@ class Reddit(QtGui.QWidget):
 
     def set_layout(self):
         grid = QtGui.QGridLayout()
+        grid.setSpacing(10)
         self.setLayout(grid)
 
-        positions = [(i,j) for i in range(5) for j in range(2)]
+        positions = [(i, j) for i in range(5) for j in range(2)]
         for position, name in zip(positions, self.subreddits):
 
             if name == '':
                 continue
             button = QtGui.QPushButton(name)
+            button.setSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
+            button.setStyleSheet('font-size: 60pt; font-family: ComicSans;')
             grid.addWidget(button, *position)
 
     def center(self):
