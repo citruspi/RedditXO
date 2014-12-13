@@ -11,29 +11,54 @@ import sys
 from PyQt4 import QtGui
 
 
-class Example(QtGui.QWidget):
+class Reddit(QtGui.QWidget):
     def __init__(self):
-        super(Example, self).__init__()
+        super(Reddit, self).__init__()
+        self.sections = {
+            "Science": "science",
+            "Technology": "Technology",
+            "World News": "Worldnews",
+            "Local News": "Loalnews",
+            "Sports": "sports"
+        }
 
         self.initUI()
 
     def initUI(self):
-        self.resize(250 * 4, 150 * 4)
-        self.center()
+        self.fetch_data()
+        self.set_layout()
+        # Set font
+        QtGui.QToolTip.setFont(QtGui.QFont('SansSerif', 10))
 
-        self.setWindowTitle('Center')
+        # Making a button
+        btn = QtGui.QPushButton('Button', self)
+        btn.resize(btn.sizeHint())
+        btn.move(50, 50)
+
+        self.center()
+        self.setWindowTitle('RedditXO')
+
+        # Finally, show it
         self.show()
 
+    def set_layout(self):
+        grid = QtGui.QGridLayout()
+        self.setLayout(grid)
+
     def center(self):
+        self.resize(250 * 4, 150 * 4)
         qr = self.frameGeometry()
         cp = QtGui.QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
 
+    def fetch_data(self):
+        pass
+
 
 def main():
     app = QtGui.QApplication(sys.argv)
-    ex = Example()
+    reddit = Reddit()
     sys.exit(app.exec_())
 
 
