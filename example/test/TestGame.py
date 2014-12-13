@@ -72,10 +72,11 @@ class TestGame:
             start_y_pos_subreddits = 150
             for key in self.subreddits:
                 self.printText(key, 60, start_x_pos_subreddits, start_y_pos_subreddits, self.green)
-                start_y_pos_subreddits += 50
+                start_y_pos_subreddits += 100
 
             # Flip Display
             pygame.display.flip()
+            # fill later
 
             # Try to stay at 30 FPS
             self.clock.tick(30)
