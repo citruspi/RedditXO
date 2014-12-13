@@ -57,7 +57,7 @@ class TestGame:
             yellow = (255, 255, 0)
             title = myfont.render("RedditXO Client!", 1, yellow)
             # put the label object on the screen at point x=100, y=100
-            screen.blit(title, (900, 100))
+            screen.blit(title, (500, 50))
 
             # Clear Display
             #screen.fill((255, 255, 255))  # 255 for white
