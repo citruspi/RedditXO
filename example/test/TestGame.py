@@ -23,7 +23,8 @@ class Reddit(QtGui.QWidget):
             "Travel": "travel",
             "Math":"",
             "English":"",
-            "Secret":""
+            "Secret":"",
+            "Funny": ""
         }
 
         self.initUI()
