@@ -19,9 +19,21 @@ class SubredditView(QT.QWidget):
 
         self.set_layout()
 
+    def clicked(self):
+
+        sender = self.sender()
+        text = sender.text()
+
+        if text == 'back':
+
+            # Switch back to group selection
+            self.uistack.setCurrentIndex(0)
+
     def set_layout(self):
         main_grid = QT.QVBoxLayout()
         back_button = QT.QPushButton("Back")
+        back_button.clicked.connect(self.clicked)
+
         main_grid.addWidget(back_button)
 
 
