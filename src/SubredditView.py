@@ -78,10 +78,10 @@ class PostWidget(QT.QWidget):
 
         right_side = QT.QVBoxLayout()
         go_button = QT.QPushButton("View Link")
-        go_button.setMaximumWidth(150)
+        go_button.setMaximumWidth(160)
         go_button.clicked.connect(self.go_to_link_action)
-        comments_button = QT.QPushButton("View Comments")
-        comments_button.setMaximumWidth(150)
+        comments_button = QT.QPushButton("Comment")
+        comments_button.setMaximumWidth(160)
         comments_button.clicked.connect(self.go_to_comments_action)
         right_side.addWidget(go_button)
         right_side.addWidget(comments_button)
