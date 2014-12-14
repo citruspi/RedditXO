@@ -26,7 +26,7 @@ class PostView(QT.QWidget):
 
         webview = QT.QWebView()
 
-        webview.load(QT.QUrl(post.url))
+        webview.load(QT.QUrl(self.post.url))
 
         main_grid.addWidget(webview)
 

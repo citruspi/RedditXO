@@ -7,6 +7,8 @@ View representation for a subreddit
 
 from PyQt4 import QtGui as QT
 
+from PostView import PostView
+
 
 class SubredditView(QT.QWidget):
     def __init__(self, subreddit_posts, stack):
@@ -36,7 +38,7 @@ class SubredditView(QT.QWidget):
 
         for post in self.subreddit_posts:
             post_wid = PostWidget(post)
-            #post_wid.clicked.connect(self.clicked)
+            # post_wid.clicked.connect(self.clicked)
             main_grid.addWidget(post_wid)
 
         self.setLayout(main_grid)
@@ -75,5 +77,6 @@ class PostWidget(QT.QWidget):
         self.setLayout(a_level_layout)
 
     def go_to_link_action(self):
-
-        pass
+        post_view_widget = PostView(self.post, self.uistack)
+        self.uistack.addWidget(post_view_widget)
+        self.uistack.setCurrentIndex(2)
