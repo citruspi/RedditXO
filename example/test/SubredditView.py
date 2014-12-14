@@ -5,7 +5,6 @@ last edited: December 2014
 View representation for a subreddit
 """
 
-
 from PyQt4 import QtGui as QT
 
 
@@ -21,12 +20,10 @@ class SubredditView(QT.QWidget):
         self.show()
 
     def clicked(self):
-
         sender = self.sender()
         text = sender.text()
 
         if text == 'back':
-
             # Switch back to group selection
             self.uistack.setCurrentIndex(0)
 
@@ -36,7 +33,6 @@ class SubredditView(QT.QWidget):
         back_button.clicked.connect(self.clicked)
 
         main_grid.addWidget(back_button)
-
 
         self.setLayout(main_grid)
 
