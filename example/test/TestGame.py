@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-last edited: October 2014
+last edited: December 2014
 Reddit XO Main entry point for QT program
 """
 
