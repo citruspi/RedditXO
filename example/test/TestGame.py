@@ -9,6 +9,7 @@ Reddit XO Main entry point for QT program
 import sys
 
 from PyQt4 import QtGui
+from PyQt4 import QtCore
 
 import reddit
 from SubredditView import SubredditView
@@ -69,35 +70,45 @@ class Reddit(QtGui.QWidget):
 
         :return:
         """
-        main_stack = QtGui.QStackedLayout()
 
-        main_grid = QtGui.QVBoxLayout()
         welcome_wid = QtGui.QLabel(
             "Hello! Welcome to RedditXO, a great way to browse recent news and updates on the world. From the people to the people")
         welcome_wid.setWordWrap(True)
+        welcome_wid.setAlignment(QtCore.Qt.AlignCenter)
+
+        image = QtGui.QLabel()
+        image.setPixmap(QtGui.QPixmap("res/reddit.png"))
+        image.setAlignment(QtCore.Qt.AlignCenter)
+
+        # Main page grid, displays and renders all buttons
+        main_grid = QtGui.QVBoxLayout()
+        main_grid.addWidget(image)
         main_grid.addWidget(welcome_wid)
 
         grid = QtGui.QGridLayout()
         grid.setSpacing(10)
         main_grid.addLayout(grid)
+        self.add_grid_buttons(grid)
 
+        front_page_wid = QtGui.QWidget()
+        front_page_wid.setLayout(main_grid)
+
+        # This is the main stack of what gets shown.
+        main_stack = QtGui.QStackedLayout()
+        main_stack.addWidget(front_page_wid)
+        self.main_stack = main_stack
+
+        self.setLayout(main_stack)
+
+    def add_grid_buttons(self, grid):
         positions = [(i, j) for i in range(4) for j in range(2)]
         for position, name in zip(positions, self.subreddits):
-
             if name != '':
                 button = QtGui.QPushButton(name)
                 button.setSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
                 button.setStyleSheet('font-size: 18pt; font-family: ComicSans;')
                 button.clicked.connect(self.group_selected)
                 grid.addWidget(button, *position)
-
-        front_page_wid = QtGui.QWidget()
-        front_page_wid.setLayout(main_grid)
-
-        main_stack.addWidget(front_page_wid)
-        self.main_stack = main_stack
-
-        self.setLayout(main_stack)
 
     def group_selected(self):
         """
