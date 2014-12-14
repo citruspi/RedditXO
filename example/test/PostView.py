@@ -11,10 +11,11 @@ class PostView(QT.QWidget):
         self.uistack = stack
 
         self.set_layout()
-        self.show()
+        # self.show()
 
     def clicked(self):
         self.uistack.setCurrentIndex(1)
+        self.uistack.takeAt(2)
 
     def set_layout(self):
         main_grid = QT.QVBoxLayout()

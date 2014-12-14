@@ -28,6 +28,7 @@ class SubredditView(QT.QWidget):
         if text == 'Back':
             # Switch back to group selection
             self.uistack.setCurrentIndex(0)
+            self.uistack.takeAt(1)
 
     def set_layout(self):
         main_grid = QT.QVBoxLayout()
@@ -79,5 +80,5 @@ class PostWidget(QT.QWidget):
 
     def go_to_link_action(self):
         post_view_widget = PostView(self.post, self.stack)
-        self.uistack.addWidget(post_view_widget)
-        self.uistack.setCurrentIndex(2)
+        self.stack.addWidget(post_view_widget)
+        self.stack.setCurrentIndex(2)

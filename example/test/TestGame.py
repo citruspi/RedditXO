@@ -86,7 +86,7 @@ class Reddit(QtGui.QWidget):
             if name != '':
                 button = QtGui.QPushButton(name)
                 button.setSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
-                button.setStyleSheet('font-size: 20pt; font-family: ComicSans;')
+                button.setStyleSheet('font-size: 18pt; font-family: ComicSans;')
                 button.clicked.connect(self.group_selected)
                 grid.addWidget(button, *position)
 
@@ -123,7 +123,7 @@ class Reddit(QtGui.QWidget):
         Responsible for the main geometry of the system, and then centering it.
         :return:
         """
-        self.resize(230 * 2, 150 * 3)
+        self.resize(100 * 2, 150 * 3)
         qr = self.frameGeometry()
         cp = QtGui.QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
