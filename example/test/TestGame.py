@@ -19,12 +19,10 @@ class Reddit(QtGui.QWidget):
             "Science": "science",
             "Technology": "Technology",
             "World News": "Worldnews",
-            "Local News": "Loalnews",
             "Sports": "sports",
             "Travel": "travel",
             "Math": "",
             "English": "",
-            "Secret": "",
             "Funny": ""
         }
 
@@ -42,6 +40,8 @@ class Reddit(QtGui.QWidget):
         self.show()
 
     def set_layout(self):
+        main_stack = QtGui.QStackedLayout()
+
         main_grid = QtGui.QVBoxLayout()
         welcome_wid = QtGui.QLabel(
             "Hello! Welcome to RedditXO, a great way to browse recent news and updates on the world. From the people to the people")
@@ -52,9 +52,9 @@ class Reddit(QtGui.QWidget):
         main_grid.addLayout(grid)
         # stack.addChildLayout(grid)
         # self.setLayout(grid)
-        self.setLayout(main_grid)
 
-        positions = [(i, j) for i in range(5) for j in range(2)]
+
+        positions = [(i, j) for i in range(4) for j in range(2)]
         for position, name in zip(positions, self.subreddits):
 
             if name != '':
@@ -62,6 +62,8 @@ class Reddit(QtGui.QWidget):
                 button.setSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
                 button.setStyleSheet('font-size: 20pt; font-family: ComicSans;')
                 grid.addWidget(button, *position)
+
+        self.setLayout(main_grid)
 
     def center(self):
         self.resize(230 * 2, 150 * 3)
