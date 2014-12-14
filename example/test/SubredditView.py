@@ -50,4 +50,23 @@ class PostWidget(QT.QWidget):
         self.title = post_object.title
         self.author = post_object.author.user_name
 
+        self.set_layout()
         self.show()
+
+    def set_layout(self):
+        left_side = QT.QVBoxLayout()
+        title_label = QT.QLabel(self.title)
+        author_label = QT.QLabel(self.author)
+        left_side.addWidget(title_label)
+        left_side.addWidget(author_label)
+
+        right_side = QT.QHBoxLayout()
+        go_button = QT.QPushButton("View Link")
+        comments_button = QT.QPushButton("View Comments")
+        right_side.addWidget(go_button)
+        right_side.addWidget(comments_button)
+
+        a_level_layout = QT.QHBoxLayout()
+        a_level_layout.addLayout(left_side)
+        a_level_layout.addLayout(right_side)
+
