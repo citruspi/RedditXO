@@ -126,7 +126,7 @@ class Reddit(QtGui.QWidget):
         Responsible for the main geometry of the system, and then centering it.
         :return:
         """
-        self.resize(200 * 2, 150 * 3)
+        self.resize(220 * 3, 200 * 2)
         qr = self.frameGeometry()
         cp = QtGui.QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
