@@ -49,9 +49,6 @@ class Reddit(QtGui.QWidget):
         grid = QtGui.QGridLayout()
         grid.setSpacing(10)
         main_grid.addLayout(grid)
-        # stack.addChildLayout(grid)
-        # self.setLayout(grid)
-
 
         positions = [(i, j) for i in range(4) for j in range(2)]
         for position, name in zip(positions, self.subreddits):
@@ -62,8 +59,6 @@ class Reddit(QtGui.QWidget):
                 button.setStyleSheet('font-size: 20pt; font-family: ComicSans;')
                 button.clicked.connect(self.group_selected)
                 grid.addWidget(button, *position)
-
-        welcome_wid2 = QtGui.QLabel("YOLO")
 
         front_page_wid = QtGui.QWidget()
         front_page_wid.setLayout(main_grid)
