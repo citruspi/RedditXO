@@ -80,6 +80,14 @@ class PostWidget(QT.QWidget):
         self.setLayout(a_level_layout)
 
     def go_to_link_action(self):
-        post_view_widget = PostView(self.post, self.stack)
-        self.stack.addWidget(post_view_widget)
+        post_view_widget = PostView(self.post.url, self.stack)
+        self.change_view_to(post_view_widget)
+
+    def go_to_comments_action(self):
+        post_view_widget = PostView(self.post.permalink, self.stack)
+        self.change_view_to(post_view_widget)
+
+
+    def change_view_to(self, widget):
+        self.stack.addWidget(widget)
         self.stack.setCurrentIndex(2)
