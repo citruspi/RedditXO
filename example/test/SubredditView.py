@@ -23,7 +23,7 @@ class SubredditView(QT.QWidget):
         sender = self.sender()
         text = sender.text()
 
-        if text == 'back':
+        if text == 'Back':
             # Switch back to group selection
             self.uistack.setCurrentIndex(0)
 
