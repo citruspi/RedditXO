@@ -36,3 +36,11 @@ class SubredditView(QT.QWidget):
 
         self.setLayout(main_grid)
 
+class PostWidget(QT.QWidget):
+    def __init__(self, post_object):
+        super(PostWidget, self).__init__()
+
+        self.title = post_object.title
+        self.author = post_object.author.user_name
+
+        self.show()
