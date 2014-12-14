@@ -61,6 +61,7 @@ class Reddit(QtGui.QWidget):
                 button = QtGui.QPushButton(name)
                 button.setSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
                 button.setStyleSheet('font-size: 20pt; font-family: ComicSans;')
+                button.clicked.connect(self.group_selected)
                 grid.addWidget(button, *position)
 
         first_stack = QtGui.QStackedWidget()
@@ -68,6 +69,15 @@ class Reddit(QtGui.QWidget):
         main_stack.addWidget(first_stack)
 
         self.setLayout(main_grid)
+
+    def group_selected(self):
+
+        sender = self.sender()
+
+        group = str(sender.text())
+
+        posts = self.client.get_group(self.subreddits[group])
+
 
     def center(self):
         self.resize(230 * 2, 150 * 3)
