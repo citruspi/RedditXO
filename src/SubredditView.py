@@ -43,6 +43,11 @@ class SubredditView(QT.QWidget):
             # post_wid.clicked.connect(self.clicked)
             main_grid.addWidget(post_wid)
 
+            line = QT.QFrame()
+            line.setFrameShape(QT.QFrame.HLine)
+            line.setFrameShadow(QT.QFrame.Sunken)
+            main_grid.addWidget(line)
+
         self.setLayout(main_grid)
 
 
