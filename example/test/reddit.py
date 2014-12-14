@@ -28,11 +28,11 @@ class Client(object):
 
         subreddit = self.connection.get_subreddit(subreddits)
 
-        return subreddit.get_hot(limit=10)
+        return list(subreddit.get_hot(limit=10))
 
 
     def get_subreddit(self, subreddit):
 
         subreddit = self.connection.get_subreddit(subreddit)
 
-        return subreddit.get_hot(limit=10)
+        return list(subreddit.get_hot(limit=10))

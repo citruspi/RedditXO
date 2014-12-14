@@ -9,7 +9,7 @@ Reddit XO Main entry point for QT program
 import sys
 
 from PyQt4 import QtGui
-
+import reddit
 
 class Reddit(QtGui.QWidget):
     def __init__(self):
@@ -17,14 +17,14 @@ class Reddit(QtGui.QWidget):
 
         self.subreddits = {
             "Science": "science",
-            "Technology": "Technology",
-            "World News": "Worldnews",
+            "Technology": "technology",
+            "News": "news",
             "Sports": "sports",
             "Travel": "travel",
-            "Math": "",
-            "English": "",
-            "Funny": ""
+            "Math": "math",
         }
+
+        self.client = reddit.Client()
 
         self.initUI()
 
@@ -61,6 +61,7 @@ class Reddit(QtGui.QWidget):
                 button = QtGui.QPushButton(name)
                 button.setSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
                 button.setStyleSheet('font-size: 20pt; font-family: ComicSans;')
+                button.clicked.connect(self.group_selected)
                 grid.addWidget(button, *position)
 
         welcome_wid2 = QtGui.QLabel("YOLO")
@@ -74,6 +75,15 @@ class Reddit(QtGui.QWidget):
         main_stack.addWidget(subreddit_wid)
 
         self.setLayout(main_stack)
+
+    def group_selected(self):
+
+        sender = self.sender()
+
+        group = str(sender.text())
+
+        posts = self.client.get_group(self.subreddits[group])
+
 
     def center(self):
         self.resize(230 * 2, 150 * 3)
