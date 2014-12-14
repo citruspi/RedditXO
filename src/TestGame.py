@@ -5,6 +5,7 @@
 last edited: December 2014
 Reddit XO Main entry point for QT program
 """
+import os
 
 import sys
 
@@ -77,7 +78,7 @@ class Reddit(QtGui.QWidget):
         welcome_wid.setAlignment(QtCore.Qt.AlignCenter)
 
         image = QtGui.QLabel()
-        image.setPixmap(QtGui.QPixmap("res/reddit.png"))
+        image.setPixmap(QtGui.QPixmap(os.path.dirname(os.path.realpath(__file__)) + "/res/reddit.png"))
         image.setAlignment(QtCore.Qt.AlignCenter)
 
         # Main page grid, displays and renders all buttons
