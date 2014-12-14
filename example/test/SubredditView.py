@@ -35,10 +35,9 @@ class SubredditView(QT.QWidget):
         main_grid.addWidget(back_button)
 
         for post in self.subreddit_posts:
-            btn = QT.QPushButton(post.title)
-            btn.clicked.connect(self.clicked)
-
-            main_grid.addWidget(btn)
+            post_wid = PostWidget(post)
+            #post_wid.clicked.connect(self.clicked)
+            main_grid.addWidget(post_wid)
 
         self.setLayout(main_grid)
 
@@ -48,7 +47,7 @@ class PostWidget(QT.QWidget):
         super(PostWidget, self).__init__()
 
         self.title = post_object.title
-        self.author = post_object.author.user_name
+        self.author = "yoloman"
 
         self.set_layout()
         self.show()
@@ -69,4 +68,6 @@ class PostWidget(QT.QWidget):
         a_level_layout = QT.QHBoxLayout()
         a_level_layout.addLayout(left_side)
         a_level_layout.addLayout(right_side)
+
+        self.setLayout(a_level_layout)
 
