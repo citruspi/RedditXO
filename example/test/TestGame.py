@@ -9,7 +9,10 @@ Reddit XO Main entry point for QT program
 import sys
 
 from PyQt4 import QtGui
+
 import reddit
+import SubredditView
+
 
 class Reddit(QtGui.QWidget):
     def __init__(self):
@@ -66,7 +69,7 @@ class Reddit(QtGui.QWidget):
         subreddit_wid = QtGui.QWidget()
 
         main_stack.addWidget(front_page_wid)
-        main_stack.addWidget(subreddit_wid)
+        self.main_stack = main_stack
 
         self.setLayout(main_stack)
 
@@ -77,6 +80,9 @@ class Reddit(QtGui.QWidget):
         group = str(sender.text())
 
         posts = self.client.get_group(self.subreddits[group])
+        subreddit_widget = SubredditView(posts)
+        self.main_stack.addWidget(subreddit_widget, self.main_stack)
+        self.main_stack.setCurrentIndex(1)
 
 
     def center(self):

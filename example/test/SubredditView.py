@@ -10,11 +10,12 @@ from PyQt4 import QtGui as QT
 
 
 class SubredditView(QT.QWidget):
-    def __init__(self, subreddit_object):
+    def __init__(self, subreddit_posts, stack):
         super(SubredditView, self).__init__()
 
         # set subreddit data here
-        self.subreddit_obj = subreddit_object
+        self.subreddit_posts = subreddit_posts
+        self.uistack = stack
 
         self.set_layout()
 
