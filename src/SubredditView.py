@@ -66,8 +66,13 @@ class PostWidget(QT.QWidget):
         left_side = QT.QVBoxLayout()
         title_label = QT.QLabel(self.title)
         title_label.setWordWrap(True)
+        title_font = QT.QFont("Comic Sans", 12, QT.QFont.Bold)
+        title_label.setFont(title_font)
+
         author_label = QT.QLabel(self.author)
         author_label.setWordWrap(True)
+        author_font = QT.QFont("Comic Sans", 10, italic=True)
+        author_label.setFont(author_font)
         left_side.addWidget(title_label)
         left_side.addWidget(author_label)
 
