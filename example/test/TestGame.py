@@ -63,6 +63,10 @@ class Reddit(QtGui.QWidget):
                 button.setStyleSheet('font-size: 20pt; font-family: ComicSans;')
                 grid.addWidget(button, *position)
 
+        first_stack = QtGui.QStackedWidget()
+        first_stack.setLayout(main_grid)
+        main_stack.addWidget(first_stack)
+
         self.setLayout(main_grid)
 
     def center(self):

@@ -6,7 +6,7 @@ class Client(object):
 
     def __init__(self):
 
-        useragent = """RedditXO: Empowering the with XO OLPC's to
+        useragent = """RedditXO: Empowering the poor bastards with XO OLPC's to
         read Reddit."""
 
         connection = praw.Reddit(useragent)
