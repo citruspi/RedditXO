@@ -18,6 +18,7 @@ class SubredditView(QT.QWidget):
         self.uistack = stack
 
         self.set_layout()
+        self.show()
 
     def set_layout(self):
         main_grid = QT.QVBoxLayout()

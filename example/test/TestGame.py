@@ -11,7 +11,7 @@ import sys
 from PyQt4 import QtGui
 
 import reddit
-import SubredditView
+from SubredditView import SubredditView
 
 
 class Reddit(QtGui.QWidget):
@@ -80,8 +80,8 @@ class Reddit(QtGui.QWidget):
         group = str(sender.text())
 
         posts = self.client.get_group(self.subreddits[group])
-        subreddit_widget = SubredditView(posts)
-        self.main_stack.addWidget(subreddit_widget, self.main_stack)
+        subreddit_widget = SubredditView(posts, self.main_stack)
+        self.main_stack.addWidget(subreddit_widget)
         self.main_stack.setCurrentIndex(1)
 
 
