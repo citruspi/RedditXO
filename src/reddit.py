@@ -1,10 +1,16 @@
 import praw
 
 class Client(object):
+    """
+    Provides an interface between the GUI and the Reddit API
+    """
 
     connection = None
 
     def __init__(self):
+        """
+        Initializes the connection to Reddit with Praw
+        """
 
         useragent = """RedditXO: Empowering XO OLPC users to learn from the
         world."""
@@ -14,6 +20,9 @@ class Client(object):
         self.connection = connection
 
     def get_group(self, group):
+        """
+        Returns the top five posts from a predefined group of subreddits
+        """
 
         groups = {
                 'science': ['science', 'askscience'],
@@ -30,8 +39,10 @@ class Client(object):
 
         return list(subreddit.get_hot(limit=5))
 
-
     def get_subreddit(self, subreddit):
+        """
+        Returns the top five posts from a single subreddit
+        """
 
         subreddit = self.connection.get_subreddit(subreddit)
 
