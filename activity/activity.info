@@ -1,8 +1,0 @@
-[Activity]
-name = RedditXO
-bundle_id = redditxo.foss.rit
-icon = redditxo
-exec = sugar-activity activity.RedditXO
-show_launcher = yes
-activity_version = 1
-license = MIT
