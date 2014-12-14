@@ -35,10 +35,9 @@ class SubredditView(QT.QWidget):
         main_grid.addWidget(back_button)
 
         for post in self.subreddit_posts:
-            btn = QT.QPushButton(post.title)
-            btn.clicked.connect(self.clicked)
-
-            main_grid.addWidget(btn)
+            post_wid = PostWidget(post)
+            #post_wid.clicked.connect(self.clicked)
+            main_grid.addWidget(post_wid)
 
         self.setLayout(main_grid)
 
@@ -47,21 +46,24 @@ class PostWidget(QT.QWidget):
     def __init__(self, post_object):
         super(PostWidget, self).__init__()
 
+        self.post = post_object
         self.title = post_object.title
-        self.author = post_object.author.user_name
+        self.author = str(post_object.author)
 
         self.set_layout()
-        self.show()
 
     def set_layout(self):
         left_side = QT.QVBoxLayout()
         title_label = QT.QLabel(self.title)
+        title_label.setWordWrap(True)
         author_label = QT.QLabel(self.author)
+        author_label.setWordWrap(True)
         left_side.addWidget(title_label)
         left_side.addWidget(author_label)
 
-        right_side = QT.QHBoxLayout()
+        right_side = QT.QVBoxLayout()
         go_button = QT.QPushButton("View Link")
+        go_button.clicked.connect(self.go_to_link_action)
         comments_button = QT.QPushButton("View Comments")
         right_side.addWidget(go_button)
         right_side.addWidget(comments_button)
@@ -70,3 +72,8 @@ class PostWidget(QT.QWidget):
         a_level_layout.addLayout(left_side)
         a_level_layout.addLayout(right_side)
 
+        self.setLayout(a_level_layout)
+
+    def go_to_link_action(self):
+
+        pass
