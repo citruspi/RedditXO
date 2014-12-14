@@ -14,6 +14,7 @@ from PyQt4 import QtGui
 class Reddit(QtGui.QWidget):
     def __init__(self):
         super(Reddit, self).__init__()
+
         self.subreddits = {
             "Science": "science",
             "Technology": "Technology",
