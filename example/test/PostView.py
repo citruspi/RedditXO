@@ -4,10 +4,10 @@ from PyQt4.QtWebKit import QWebView
 
 
 class PostView(QT.QWidget):
-    def __init__(self, post, stack):
+    def __init__(self, url, stack):
         super(PostView, self).__init__()
 
-        self.post = post
+        self.url = url
         self.uistack = stack
 
         self.set_layout()
@@ -26,7 +26,7 @@ class PostView(QT.QWidget):
 
         webview = QWebView()
 
-        webview.load(core.QUrl(self.post.url))
+        webview.load(core.QUrl(self.url))
 
         main_grid.addWidget(webview)
 
