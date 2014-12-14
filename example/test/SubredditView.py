@@ -25,8 +25,8 @@ class SubredditView(QT.QWidget):
         sender = self.sender()
         text = sender.text()
 
-        if text == 'back':
-
+        if text == 'Back':
+            print 'hello'
             # Switch back to group selection
             self.uistack.setCurrentIndex(0)
 
@@ -37,6 +37,12 @@ class SubredditView(QT.QWidget):
 
         main_grid.addWidget(back_button)
 
+        for post in self.subreddit_posts:
+
+            btn = QT.QPushButton(post.title)
+            btn.clicked.connect(self.clicked)
+
+            main_grid.addWidget(btn)
 
         self.setLayout(main_grid)
 
