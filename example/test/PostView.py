@@ -12,9 +12,17 @@ class PostView(QT.QWidget):
         self.set_layout()
         self.show()
 
+    def clicked(self):
+
+        self.uistack.setCurrentIndex(1)
+
     def set_layout(self):
 
         main_grid = QT.QVBoxLayout()
+
+        back_button = QT.QPushButton("Back")
+        back_button.clicked.connect(self.clicked)
+        main_grid.addWidget(back_button)
 
         webview = QT.QWebView()
 
