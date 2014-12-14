@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-last edited: October 2014
+last edited: December 2014
 Reddit XO Main entry point for QT program
 """
 
@@ -15,7 +15,20 @@ from SubredditView import SubredditView
 
 
 class Reddit(QtGui.QWidget):
+    """
+    The main Entry point of the RedditXO Program.
+    This is actually the QT Widget that starts up the
+    main home page.
+    """
+
     def __init__(self):
+        """
+        Inits a QWidget. Also instantiates a client
+        which is the API that interacts with Reddit.com
+
+        Finally inits the UI with layouts and stuff.
+        :return:
+        """
         super(Reddit, self).__init__()
 
         self.subreddits = {
@@ -32,6 +45,12 @@ class Reddit(QtGui.QWidget):
         self.initUI()
 
     def initUI(self):
+        """
+        Sets up the layout and the general view for the main page.
+
+        It also centers the windows and sets some main properties like the title
+        :return:
+        """
 
         self.set_layout()
 
@@ -42,6 +61,14 @@ class Reddit(QtGui.QWidget):
         self.show()
 
     def set_layout(self):
+        """
+        Sets the specific main layouts.
+        The layout structure is all parented by a STACKED LAYOUT.
+        The Stack layout is to have at most 2 widgets stacked. The first widget (@ index 0) is
+        the main page and the second stacked widget is the subreddit page.
+
+        :return:
+        """
         main_stack = QtGui.QStackedLayout()
 
         main_grid = QtGui.QVBoxLayout()
@@ -66,14 +93,21 @@ class Reddit(QtGui.QWidget):
         front_page_wid = QtGui.QWidget()
         front_page_wid.setLayout(main_grid)
 
-        subreddit_wid = QtGui.QWidget()
-
         main_stack.addWidget(front_page_wid)
         self.main_stack = main_stack
 
         self.setLayout(main_stack)
 
     def group_selected(self):
+        """
+        Button Listener
+        Listens to the buttons clicked on the main page.
+        Given the button, will ask the client to perform the data fetch.
+        With the data, create a subreddit view widget and add it to the stack.
+
+        Then switch the stack back.
+        :return:
+        """
 
         sender = self.sender()
 
@@ -84,8 +118,11 @@ class Reddit(QtGui.QWidget):
         self.main_stack.addWidget(subreddit_widget)
         self.main_stack.setCurrentIndex(1)
 
-
     def center(self):
+        """
+        Responsible for the main geometry of the system, and then centering it.
+        :return:
+        """
         self.resize(230 * 2, 150 * 3)
         qr = self.frameGeometry()
         cp = QtGui.QDesktopWidget().availableGeometry().center()
@@ -94,6 +131,10 @@ class Reddit(QtGui.QWidget):
 
 
 def main():
+    """
+    Start the app, set the system close.
+    :return:
+    """
     app = QtGui.QApplication(sys.argv)
     reddit = Reddit()
     sys.exit(app.exec_())
