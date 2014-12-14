@@ -74,6 +74,7 @@ class Reddit(QtGui.QWidget):
         main_grid = QtGui.QVBoxLayout()
         welcome_wid = QtGui.QLabel(
             "Hello! Welcome to RedditXO, a great way to browse recent news and updates on the world. From the people to the people")
+        welcome_wid.setWordWrap(True)
         main_grid.addWidget(welcome_wid)
 
         grid = QtGui.QGridLayout()
@@ -113,6 +114,8 @@ class Reddit(QtGui.QWidget):
 
         group = str(sender.text())
 
+        self.setWindowTitle(group)
+
         posts = self.client.get_group(self.subreddits[group])
         subreddit_widget = SubredditView(posts, self.main_stack)
         self.main_stack.addWidget(subreddit_widget)
@@ -123,7 +126,7 @@ class Reddit(QtGui.QWidget):
         Responsible for the main geometry of the system, and then centering it.
         :return:
         """
-        self.resize(100 * 2, 150 * 3)
+        self.resize(200 * 2, 150 * 3)
         qr = self.frameGeometry()
         cp = QtGui.QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)

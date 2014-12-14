@@ -29,6 +29,7 @@ class SubredditView(QT.QWidget):
             # Switch back to group selection
             self.uistack.setCurrentIndex(0)
             self.uistack.takeAt(1)
+            self.parent().setWindowTitle("RedditXO")
 
     def set_layout(self):
         main_grid = QT.QVBoxLayout()
