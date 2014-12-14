@@ -9,7 +9,7 @@ Reddit XO Main entry point for QT program
 import sys
 
 from PyQt4 import QtGui
-
+import reddit
 
 class Reddit(QtGui.QWidget):
     def __init__(self):
@@ -23,6 +23,8 @@ class Reddit(QtGui.QWidget):
             "Travel": "travel",
             "Math": "math",
         }
+
+        self.client = reddit.Client()
 
         self.initUI()
 
