@@ -63,11 +63,17 @@ class Reddit(QtGui.QWidget):
                 button.setStyleSheet('font-size: 20pt; font-family: ComicSans;')
                 grid.addWidget(button, *position)
 
-        first_stack = QtGui.QStackedWidget()
-        first_stack.setLayout(main_grid)
-        main_stack.addWidget(first_stack)
+        welcome_wid2 = QtGui.QLabel("YOLO")
 
-        self.setLayout(main_grid)
+        front_page_wid = QtGui.QWidget()
+        front_page_wid.setLayout(main_grid)
+
+        subreddit_wid = QtGui.QWidget()
+
+        main_stack.addWidget(front_page_wid)
+        main_stack.addWidget(subreddit_wid)
+
+        self.setLayout(main_stack)
 
     def center(self):
         self.resize(230 * 2, 150 * 3)
