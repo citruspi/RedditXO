@@ -13,7 +13,7 @@ class Client(object):
 
         self.connection = connection
 
-    def fetchgroup(self, group):
+    def get_group(self, group):
 
         groups = {
                 'science': ['science', 'askscience'],
@@ -27,5 +27,12 @@ class Client(object):
         subreddits = '+'.join(groups[group])
 
         subreddit = self.connection.get_subreddit(subreddits)
+
+        return subreddit.get_hot(limit=10)
+
+
+    def get_subreddit(self, subreddit):
+
+        subreddit = self.connection.get_subreddit(subreddit)
 
         return subreddit.get_hot(limit=10)
