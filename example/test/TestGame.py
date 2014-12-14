@@ -17,13 +17,11 @@ class Reddit(QtGui.QWidget):
 
         self.subreddits = {
             "Science": "science",
-            "Technology": "Technology",
-            "World News": "Worldnews",
+            "Technology": "technology",
+            "News": "news",
             "Sports": "sports",
             "Travel": "travel",
-            "Math": "",
-            "English": "",
-            "Funny": ""
+            "Math": "math",
         }
 
         self.initUI()
