@@ -70,6 +70,7 @@ class PostWidget(QT.QWidget):
         go_button = QT.QPushButton("View Link")
         go_button.clicked.connect(self.go_to_link_action)
         comments_button = QT.QPushButton("View Comments")
+        comments_button.clicked.connect(self.go_to_comments_action)
         right_side.addWidget(go_button)
         right_side.addWidget(comments_button)
 
