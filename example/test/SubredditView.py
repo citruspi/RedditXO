@@ -34,7 +34,14 @@ class SubredditView(QT.QWidget):
 
         main_grid.addWidget(back_button)
 
+        for post in self.subreddit_posts:
+            btn = QT.QPushButton(post.title)
+            btn.clicked.connect(self.clicked)
+
+            main_grid.addWidget(btn)
+
         self.setLayout(main_grid)
+
 
 class PostWidget(QT.QWidget):
     def __init__(self, post_object):
