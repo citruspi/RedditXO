@@ -30,7 +30,6 @@ class Reddit(QtGui.QWidget):
 
     def initUI(self):
 
-        self.fetch_data()
         self.set_layout()
 
         self.center()
@@ -91,9 +90,6 @@ class Reddit(QtGui.QWidget):
         cp = QtGui.QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
-
-    def fetch_data(self):
-        pass
 
 
 def main():
